@@ -1,0 +1,25 @@
+language: python
+python:
+  - "3.6"
+
+services:
+  - docker
+
+env:
+  global:
+    - SERVICE_UUID=
+    - AOS_UPLOAD_SERVICE_URL=https://fusion-poc-2.cloudapp.net:10000/api/v1/services/versions/
+    - SP_CERTIFICATE=meta_folder/sp.crt
+    - PRIVATE_KEY=meta_folder/private_key.pem
+
+install:
+  - pip install docker-compose
+  - sudo apt-get install curl
+
+script:
+  - docker login --username "aoscloud" --password "y9POrQdd=Gk2j4nIKjlVMd8C3PSJPa49" aoscloud.azurecr.io && docker pull aoscloud.azurecr.io/aos/signer:0.0.1
+  - docker run -v $(pwd)/meta_folder:/data/meta/ -v $(pwd)/src/:/data/src/ aoscloud.azurecr.io/aos/signer:0.0.1
+  - curl --request POST -k --cacert meta_folder/rootCA.crt.pem --cert $SP_CERTIFICATE --key $PRIVATE_KEY --form "service=$SERVICE_UUID" --form "file=@src/service.tar.gz" $AOS_UPLOAD_SERVICE_URL
+
+
+
