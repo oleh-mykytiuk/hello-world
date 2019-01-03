@@ -28,7 +28,7 @@ logger = logging.getLogger(__name__)
 VIS_URL = os.getenv("VIS_URL", "wss://wwwivi:8088/")
 
 # Go to https://webhook.site/#/ copy and paste server link to HTTP_REQUEST_RECEIVER_URL
-HTTP_REQUEST_RECEIVER_URL = os.getenv("HTTP_REQUEST_RECEIVER_URL")
+HTTP_REQUEST_RECEIVER_URL = "https://webhook.site/534c66d8-035d-443f-9db8-f1b0dddfe69a"
 
 DATA_SENDING_DELAY = 2
 WAIT_TIMEOUT = 5
