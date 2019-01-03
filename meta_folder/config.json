@@ -16,7 +16,5 @@
     }
   },
   "quotas": {
-    "cpu_limit": 50,
-    "memory_limit": 1000
   }
 }
