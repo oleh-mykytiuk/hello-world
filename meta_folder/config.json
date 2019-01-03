@@ -16,5 +16,6 @@
     }
   },
   "quotas": {
+     "cpu_limit": 50
   }
 }
