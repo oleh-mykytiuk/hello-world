@@ -109,7 +109,7 @@ def main():
 
                 time.sleep(DATA_SENDING_DELAY)
             except KeyboardInterrupt:
-                logger.info("Received Keyboard interrupt. shutting down")
+                logger.info("Received Keyboard interrupt. Shutting down")
                 break
             except Exception as e:
                 logger.error("Unhandled exception: {exc}".format(exc=e))
